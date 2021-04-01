@@ -47,6 +47,16 @@ kittySchema.methods.speak = () => console.log("Mow");
 const Kitten = mongoose.model('Kitten', kittySchema);
 ```
 
+#### Foreign Key
+
+To use Foreign Key in model relationship, refer to [this guide](https://mongoosejs.com/docs/guide.html)
+
+1. Create your model
+2. Use the appropriate Schema
+```js
+
+```
+
 ---
 
 #### Create

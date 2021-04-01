@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Lesson = require('../model/lesson');
 /**
  * Creates a new Lesson based on the provided data in the request's body
