@@ -1,12 +1,5 @@
 const mongoose = require('mongoose');
-const lessonSchema = mongoose.Schema({
-  label: {type: String, required: true},
-  url: {type: String},
-  icon: {type: String},
-});
-
-const Lesson = mongoose.model('Lesson', lessonSchema);
-
+const Lesson = require('../model/lesson');
 /**
  * Creates a new Lesson based on the provided data in the request's body
  * @param request
