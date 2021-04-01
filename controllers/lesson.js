@@ -1,4 +1,6 @@
 const Lesson = require('../model/lesson');
+const Chapter = require('../model/chapter');
+
 /**
  * Creates a new Lesson based on the provided data in the request's body
  * @param request
@@ -7,10 +9,14 @@ const Lesson = require('../model/lesson');
 function create(request, response) {
   if (request.body) {
     let errors = [];
-    const {label, url, icon} = request.body;
+    const {label, url, icon, chapter_id} = request.body;
 
     if (!label) {
       errors.push('Erreur, il faut un label');
+    }
+
+    if (!chapter_id) {
+      errors.push('Erreur, il faut un chapter_id')
     }
 
     if (!errors.length) {
@@ -19,6 +25,13 @@ function create(request, response) {
         url: url || '',
         icon: icon || 'search',
       }, (error, data) => {
+
+        // Update the chapter's list of Lessons
+        Chapter.findById(chapter_id, (error, chapter) => {
+          chapter.lessons.push(data._id)
+          chapter.save();
+        });
+
         response.status(200).json({message: 'La leçon a bien été créée !', data, error});
       });
     } else {
@@ -31,9 +44,7 @@ function create(request, response) {
 }
 
 function index(request, response) {
-  response.status(200).json({
-    message: 'Deleted!'
-  });
+
 }
 
 

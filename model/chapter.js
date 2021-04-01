@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const chapterSchema = Schema({
   title: {type: String, required: true},
-  order: {type: String},
-  ingredients:[ // Used for foreign key purpose
+  order: {type: Number},
+  lessons:[ // Used for foreign key purpose
     {type: Schema.Types.ObjectId, ref: 'Lesson'}
   ]
 });
