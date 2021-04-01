@@ -3,10 +3,11 @@
  */
 
 const params = {
-  username: process.env.USERNAME,
+  username: process.env.DATABASE_USERNAME,
   password: process.env.PASSWORD,
   host: process.env.HOST,
   databaseName: process.env.DATABASENAME,
 };
 
-export const url = `mongodb+srv://${params.username}:${params.password}@${params.host}/${params.databaseName}?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${params.username}:${params.password}@${params.host}/${params.databaseName}?retryWrites=true&w=majority`;
+exports.url = url;

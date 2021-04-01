@@ -1,13 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const { url } = require('./databaseService');
 
-
-mongoose.connect('mongodb+srv://MaximePie:homestead@cluster0.otmsg.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect(url,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+  .catch((error) => console.log(error));
 
 app.get('/haha', (request, response) => {
   response.status(200).json({
@@ -16,5 +17,6 @@ app.get('/haha', (request, response) => {
 });
 
 const port = process.env.PORT || 4001;
+console.log(port);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
