@@ -6,7 +6,6 @@ const { url } = require('./databaseService');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-
 app.use(cors());
 app.use(bodyParser.json());
 mongoose.connect(url,
@@ -16,7 +15,9 @@ mongoose.connect(url,
   .catch((error) => console.log(error));
 
 
-const port = process.env.PORT || 4001;
-console.log(port);
+// Importing Routes
+const routes = require('./routes');
+app.use('/', routes);
 
+const port = process.env.PORT || 4001;
 app.listen(port, () => console.log(`Listening on port ${port}`));

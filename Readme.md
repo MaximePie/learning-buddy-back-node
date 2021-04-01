@@ -72,6 +72,26 @@ Or find with a condition
 Cat.find({ name: 'Titouan' })
 ```
 
+## Testing the API with Postman
+To test the work, I use [Postman](https://www.postman.com/) because it's fabulous.
+
+### Testing with a get method
+
+1. Create a new request, and use the appropriate URL and TADA !
+![image](https://user-images.githubusercontent.com/16031936/113304226-1cf57c80-9302-11eb-9ed6-1794b6115519.png)
+
+### Testing with a post method 
+
+1. Create a new Request, use the appropriate URL
+![image](https://user-images.githubusercontent.com/16031936/113304325-3696c400-9302-11eb-9fe6-1e7223629a07.png)
+
+2. Change the header's Content-Type value in the header to `application/json`
+![image](https://user-images.githubusercontent.com/16031936/113304411-4d3d1b00-9302-11eb-98ae-4ead34740d45.png)
+
+3. Send the data in a raw body 
+![image](https://user-images.githubusercontent.com/16031936/113304593-79589c00-9302-11eb-8ba7-0b414e5ba090.png)
+
+
 ## Configuring CORS
 
 It is possible to set the CORS to be allowed only from specific sources. We can do it later. Follow 
