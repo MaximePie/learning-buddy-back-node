@@ -9,7 +9,7 @@ const Chapter = require('../model/chapter');
 function create(request, response) {
   if (request.body) {
     let errors = [];
-    const {label, url, icon, chapter_id} = request.body;
+    const {label, url, icon, chapter_id, order} = request.body;
 
     if (!label) {
       errors.push('Erreur, il faut un label');
@@ -19,9 +19,14 @@ function create(request, response) {
       errors.push('Erreur, il faut un chapter_id')
     }
 
+    if (!order && order !== 0) {
+      errors.push('Erreur, il faut un order')
+    }
+
     if (!errors.length) {
       Lesson.create({
-        label: label,
+        label,
+        order,
         url: url || '',
         icon: icon || 'search',
       }, (error, data) => {
@@ -44,7 +49,9 @@ function create(request, response) {
 }
 
 function index(request, response) {
-
+  response.status(200).json({
+    message: 'Deleted!'
+  });
 }
 
 
